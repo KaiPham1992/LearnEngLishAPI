@@ -25,7 +25,8 @@ function Connection() {
   this.acquire = function(res, callBack) {
     this.pool.getConnection(function(err, connection) {
       if (err) {
-        errorHandle.sendError(res, err)
+        console.log("jhgfkjlkljkljkljkljlk");
+        errorHandle.sendErrorConnectDB(res, err)
       } else {
           callBack(connection)
       }
