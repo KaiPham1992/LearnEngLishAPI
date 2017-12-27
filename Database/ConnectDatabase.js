@@ -1,7 +1,6 @@
 const mysql = require('mysql')
 const errorHandle = require('../Database/ErrorHandle.js')
 
-console.log(__dirname);
 // info database
 const hostName = "localhost"
 const userName = "root"
@@ -25,7 +24,6 @@ function Connection() {
   this.acquire = function(res, callBack) {
     this.pool.getConnection(function(err, connection) {
       if (err) {
-        console.log("jhgfkjlkljkljkljkljlk");
         errorHandle.sendErrorConnectDB(res, err)
       } else {
           callBack(connection)

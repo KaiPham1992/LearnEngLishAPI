@@ -7,6 +7,8 @@ const queryDeleteWorkBook = 'delete from WorkBook where idWordBook = ?'
 const queryPutWorkBook = 'Update WorkBook set ? where idWordBook = ?'
 const queryGetOneWorkBook = 'select * from WorkBook where idWordBook = ?'
 
+module.exports = new WorkBook()
+
 function WorkBook() {
   //---
   this.getAll = getAllWb
@@ -73,6 +75,7 @@ function deleteWb(res, id) {
   })
 }
 
+//---
 function getOneWb(res, id) {
   connection.acquire(res, function(con) {
     con.query(queryGetOneWorkBook, id, function(err, result){
@@ -89,5 +92,3 @@ function getOneWb(res, id) {
     })
   })
 }
-
-module.exports = new WorkBook()
