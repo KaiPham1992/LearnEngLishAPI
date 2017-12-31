@@ -30,6 +30,17 @@ function Connection() {
       }
     })
   }
+
+//-- use import data
+  this.import = function(callBack) {
+    this.pool.getConnection(function(err, connection) {
+      if (err) {
+        console.log("Import data fail line 38 Connect database dot js");
+      } else {
+          callBack(connection)
+      }
+    })
+  }
 }
 
 
