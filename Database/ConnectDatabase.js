@@ -8,6 +8,12 @@ const password = ""
 const databaseName = "LearnEnglish"
 
 
+// const hostName = "us-cdbr-iron-east-05.cleardb.net"
+// const userName = "bad0c15058c54d"
+// const password = "3b263140"
+// const databaseName = "heroku_4fd0694d05ea27d"
+
+
 function Connection() {
   this.pool = null
 
@@ -17,7 +23,8 @@ function Connection() {
       host: hostName,
       user: userName,
       password: password,
-      database: databaseName
+      database: databaseName,
+      charset: "utf8"
     })
   }
 

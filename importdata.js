@@ -13,14 +13,14 @@ let db = new sqlite3.Database('./Database/bookData.sqlite', (err) => {
 
 connection.init()
 
-importDataUnit(db)
+// importDataUnit(db)
 importDataVocabulary(db)
 
 // cac ham import
 
 function importDataUnit(db) {
   // import unit
-  let sqlUnit = "select * from Unit"
+  let sqlUnit = "select * from Unit where idWordBook = 'Wb1'"
   db.all(sqlUnit, [], (err, rows) => {
     if (err) {
       throw err;
@@ -28,7 +28,8 @@ function importDataUnit(db) {
     deleteUnit()
     rows.forEach((row) => {
       let param = {"idUnit": row.idUnit, "idWordBook": row.idWordBook, nameUnit: row.nameUnit}
-    insertUnit(param)
+        insertUnit(param)
+        // sleep.sleep(0.5)
     });
   });
 }
@@ -43,7 +44,17 @@ function importDataVocabulary(db) {
     }
    deleteVocabulary()
     rows.forEach((row) => {
-      let param = {"stt": row.stt, "english": row.english, "vnRaw": row.vnRaw, "example": row.example, "vietnamese": row.vietnamese, "idUnit": row.idUnit, "thumbUrl": row.thumbUrl, "voice": row.voice}
+      let param = {"stt": row.stt,
+      "english": row.english,
+      "vnRaw": row.vnRaw,
+      "example": row.example,
+      "vietnamese": row.vietnamese,
+      "idUnit": row.idUnit,
+      "thumbUrl": row.thumbUrl,
+      "voice": row.voice,
+      "translate": row.translate
+    }
+    
       insertVocabulary(param)
     });
   });
